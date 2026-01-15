@@ -1,0 +1,451 @@
+<!-- 
+================================================================================
+ELANICIA AUTHENTICATION PAGE
+User Login & Registration Interface
+================================================================================
+
+Features:
+ User Registration & Login
+ Luxury UI Design
+ Responsive Layout
+ Form Validation
+ API Integration
+================================================================================
+-->
+
+<!DOCTYPE html>
+<!-- Head Section - Meta tags and styling -->
+<html lang="en">
+<head>
+    <!-- Character Encoding and Viewport Settings -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page Title and Font Styles -->
+    <title>Elanicia - Login & Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Authentication Styles -->
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #faf8f5 0%, #f0ede6 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(139, 105, 20, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 900px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+        }
+
+        .auth-left {
+            background: linear-gradient(135deg, #8b6914 0%, #d4af37 100%);
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .logo {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .welcome-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        .auth-right {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #3d3427;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-subtitle {
+            color: #6b5b47;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #3d3427;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e8e3d8;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #faf8f5;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #8b6914;
+            background: white;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(45deg, #8b6914, #d4af37);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .auth-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 105, 20, 0.3);
+        }
+
+        .switch-form {
+            text-align: center;
+            color: #6b5b47;
+        }
+
+        .switch-form a {
+            color: #8b6914;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .switch-form a:hover {
+            text-decoration: underline;
+        }
+
+        .message {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .hint {
+            background: transparent;
+            padding: 6px 0;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            color: #6b5b47;
+            text-align: center;
+        }
+
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #8b6914;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-home:hover {
+            color: #d4af37;
+            transform: translateX(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .auth-container {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+
+            .auth-left {
+                padding: 2rem;
+            }
+
+            .auth-right {
+                padding: 2rem;
+            }
+
+            .logo {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+    </a>
+
+    <div class="auth-container">
+        <div class="auth-left">
+            <div class="logo">Elanicia</div>
+            <div class="tagline">Royal Swiss Heritage</div>
+            <div class="welcome-text">
+                Join our exclusive community of luxury watch enthusiasts and discover timepieces that define elegance and precision.
+            </div>
+        </div>
+
+        <div class="auth-right">
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active">
+                <h2 class="form-title">Welcome Back</h2>
+                <p class="form-subtitle">Sign in to your account</p>
+                
+                <div class="hint">Please enter your details below</div>
+                
+                <div id="loginMessage"></div>
+
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+
+                <button type="submit" class="auth-btn">Sign In</button>
+
+                <div class="switch-form">
+                    Don't have an account? <a href="#" onclick="switchToSignup()">Sign up here</a>
+                </div>
+            </form>
+
+            <!-- Sign Up Form -->
+            <form id="signupForm" class="auth-form">
+                <h2 class="form-title">Create Account</h2>
+                <p class="form-subtitle">Join the Elanicia family</p>
+                
+                <div class="hint">Please enter your details to create your account</div>
+                
+                <div id="signupMessage"></div>
+
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" required minlength="6">
+                </div>
+
+                <button type="submit" class="auth-btn">Create Account</button>
+
+                <div class="switch-form">
+                    Already have an account? <a href="#" onclick="switchToLogin()">Sign in here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Check if user is already logged in
+        window.addEventListener('load', () => {
+            const currentUser = localStorage.getItem('elaniciaCurrentUser');
+            if (currentUser) {
+                // User is already logged in, redirect to home
+                window.location.href = 'index.html';
+            }
+        });
+
+        // Switch between forms
+        function switchToSignup() {
+            document.getElementById('loginForm').classList.remove('active');
+            document.getElementById('signupForm').classList.add('active');
+            clearMessages();
+        }
+
+        function switchToLogin() {
+            document.getElementById('signupForm').classList.remove('active');
+            document.getElementById('loginForm').classList.add('active');
+            clearMessages();
+        }
+
+        function clearMessages() {
+            document.getElementById('loginMessage').innerHTML = '';
+            document.getElementById('signupMessage').innerHTML = '';
+        }
+
+        function showMessage(elementId, message, type) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = `<div class="message ${type}">${message}</div>`;
+            setTimeout(() => {
+                element.innerHTML = '';
+            }, 5000);
+        }
+
+        // Sign Up Form Handler
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('📝 Signup form submitted');
+            
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+
+            console.log('👤 Name:', name);
+            console.log('📧 Email:', email);
+            console.log('🔑 Password:', password ? '***' : 'empty');
+
+            // Basic validation
+            if (!name || !email || !password) {
+                console.log('❌ Missing fields');
+                showMessage('signupMessage', 'Please fill in all fields!', 'error');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                console.log('❌ Passwords do not match');
+                showMessage('signupMessage', 'Passwords do not match!', 'error');
+                return;
+            }
+
+            console.log('✅ Signup successful');
+            // Demo mode - accept any signup
+            showMessage('signupMessage', 'Account created successfully! You can now sign in.', 'success');
+            
+            // Clear form
+            document.getElementById('signupForm').reset();
+            
+            // Switch to login after 2 seconds
+            setTimeout(() => {
+                console.log('🔄 Switching to login form');
+                switchToLogin();
+            }, 2000);
+        });
+
+        // Login Form Handler
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('🔐 Login form submitted');
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            console.log('📧 Email:', email);
+            console.log('🔑 Password:', password ? '***' : 'empty');
+
+            // Demo mode - accept any email and password
+            if (email && password) {
+                console.log('✅ Credentials provided, logging in...');
+                
+                // Extract name from email (part before @)
+                const name = email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1);
+                
+                // Create user object
+                const user = {
+                    id: Date.now(),
+                    name: name,
+                    email: email,
+                    loginTime: new Date().toISOString()
+                };
+                
+                console.log('👤 User object:', user);
+                
+                // Save current user
+                localStorage.setItem('elaniciaCurrentUser', JSON.stringify(user));
+                
+                showMessage('loginMessage', 'Login successful! Redirecting...', 'success');
+                
+                // Redirect to home page after 1 second
+                setTimeout(() => {
+                    console.log('🏠 Redirecting to home...');
+                    window.location.href = 'index.html';
+                }, 1000);
+            } else {
+                console.log('❌ Missing credentials');
+                showMessage('loginMessage', 'Please enter both email and password!', 'error');
+            }
+        });
+
+        console.log('🔐 Elanicia Authentication System Loaded');
+        console.log('📋 Demo Mode: Any email/password combination works!');
+        console.log('🎯 Test examples:');
+        console.log('   Email: test@example.com, Password: 123');
+        console.log('   Email: admin@elanicia.com, Password: password');
+    </script>
+</body>
+</html>

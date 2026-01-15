@@ -1,0 +1,553 @@
+<!-- 
+================================================================================
+ELANICIA AUTHENTICATION BACKEND
+================================================================================
+
+Features:
+ User Management Dashboard
+ Authentication Analytics
+ Security Settings
+ Activity Logs
+ System Configuration
+================================================================================
+-->
+
+<!DOCTYPE html>
+<!-- Head Section - Meta tags and styling -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elanicia - Login & Sign Up (Backend Connected)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="beige-theme.css">
+    <!-- Authentication Styles -->
+        .auth-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(139, 105, 20, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 900px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+            margin: 2rem auto;
+        }
+
+        .auth-left {
+            background: linear-gradient(135deg, #8b6914 0%, #d4af37 100%);
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .logo {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .welcome-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        .backend-status {
+            margin-top: 2rem;
+            padding: 1rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        .backend-status.connected {
+            border-left: 4px solid #28a745;
+        }
+
+        .backend-status.disconnected {
+            border-left: 4px solid #ffc107;
+        }
+
+        .auth-right {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #3d3427;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-subtitle {
+            color: #6b5b47;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #3d3427;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e8e3d8;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #faf8f5;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #8b6914;
+            background: white;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(45deg, #8b6914, #d4af37);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .auth-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 105, 20, 0.3);
+        }
+
+        .auth-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .switch-form {
+            text-align: center;
+            color: #6b5b47;
+        }
+
+        .switch-form a {
+            color: #8b6914;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .switch-form a:hover {
+            text-decoration: underline;
+        }
+
+        .message {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #8b6914;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-home:hover {
+            color: #d4af37;
+            transform: translateX(-5px);
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #8b6914;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .auth-container {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+    </a>
+
+    <div class="auth-container">
+        <div class="auth-left">
+            <div class="logo">Elanicia</div>
+            <div class="tagline">Royal Swiss Heritage</div>
+            <div class="welcome-text">
+                Join our exclusive community of luxury watch enthusiasts and discover timepieces that define elegance and precision.
+            </div>
+            <div id="backendStatus" class="backend-status">
+                <div class="loading"></div>
+                Connecting to backend...
+            </div>
+        </div>
+
+        <div class="auth-right">
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active">
+                <h2 class="form-title">Welcome Back</h2>
+                <p class="form-subtitle">Sign in to your account</p>
+                
+                <div id="loginMessage"></div>
+
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+
+                <button type="submit" class="auth-btn" id="loginBtn">Sign In</button>
+
+                <div class="switch-form">
+                    Don't have an account? <a href="#" onclick="switchToSignup()">Sign up here</a>
+                </div>
+            </form>
+
+            <!-- Sign Up Form -->
+            <form id="signupForm" class="auth-form">
+                <h2 class="form-title">Create Account</h2>
+                <p class="form-subtitle">Join the Elanicia family</p>
+                
+                <div id="signupMessage"></div>
+
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" required minlength="6">
+                </div>
+
+                <button type="submit" class="auth-btn" id="signupBtn">Create Account</button>
+
+                <div class="switch-form">
+                    Already have an account? <a href="#" onclick="switchToLogin()">Sign in here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Backend API configuration
+        const API_BASE_URL = 'http://localhost:8001/api';
+        let backendConnected = false;
+        
+        // Check if user is already logged in
+        window.addEventListener('load', () => {
+            const currentUser = localStorage.getItem('elaniciaCurrentUser');
+            if (currentUser) {
+                window.location.href = 'index.html';
+            }
+            
+            testBackendConnection();
+        });
+
+        // Test backend connection
+        async function testBackendConnection() {
+            const statusElement = document.getElementById('backendStatus');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/health`, {
+                    method: 'GET',
+                    timeout: 5000
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    backendConnected = true;
+                    statusElement.className = 'backend-status connected';
+                    statusElement.innerHTML = `
+                        <i class="fas fa-check-circle"></i>
+                        Backend Connected (${data.database})
+                    `;
+                    console.log('✅ Backend connected:', data);
+                } else {
+                    throw new Error('Backend not responding');
+                }
+            } catch (error) {
+                backendConnected = false;
+                statusElement.className = 'backend-status disconnected';
+                statusElement.innerHTML = `
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Using Local Storage
+                `;
+                console.log('⚠️ Backend not available, using localStorage fallback');
+            }
+        }
+
+        // Switch between forms
+        function switchToSignup() {
+            document.getElementById('loginForm').classList.remove('active');
+            document.getElementById('signupForm').classList.add('active');
+            clearMessages();
+        }
+
+        function switchToLogin() {
+            document.getElementById('signupForm').classList.remove('active');
+            document.getElementById('loginForm').classList.add('active');
+            clearMessages();
+        }
+
+        function clearMessages() {
+            document.getElementById('loginMessage').innerHTML = '';
+            document.getElementById('signupMessage').innerHTML = '';
+        }
+
+        function showMessage(elementId, message, type) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = `<div class="message ${type}">${message}</div>`;
+            setTimeout(() => {
+                element.innerHTML = '';
+            }, 5000);
+        }
+
+        function setButtonLoading(buttonId, loading) {
+            const button = document.getElementById(buttonId);
+            if (loading) {
+                button.disabled = true;
+                button.innerHTML = '<div class="loading"></div>Processing...';
+            } else {
+                button.disabled = false;
+                button.innerHTML = buttonId === 'loginBtn' ? 'Sign In' : 'Create Account';
+            }
+        }
+
+        // Sign Up Form Handler with Backend Integration
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+
+            // Validation
+            if (password !== confirmPassword) {
+                showMessage('signupMessage', 'Passwords do not match!', 'error');
+                return;
+            }
+
+            setButtonLoading('signupBtn', true);
+
+            try {
+                if (backendConnected) {
+                    // Try backend first
+                    const response = await fetch(`${API_BASE_URL}/signup`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            name: name,
+                            email: email,
+                            password: password
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        showMessage('signupMessage', 'Account created successfully! You can now sign in.', 'success');
+                        document.getElementById('signupForm').reset();
+                        setTimeout(() => {
+                            switchToLogin();
+                        }, 2000);
+                    } else {
+                        showMessage('signupMessage', data.error || 'Signup failed', 'error');
+                    }
+                } else {
+                    throw new Error('Backend not available');
+                }
+            } catch (error) {
+                console.log('Using localStorage fallback for signup');
+                // Fallback to localStorage
+                const users = JSON.parse(localStorage.getItem('elaniciaUsers') || '[]');
+                
+                if (users.find(user => user.email === email)) {
+                    showMessage('signupMessage', 'An account with this email already exists!', 'error');
+                    setButtonLoading('signupBtn', false);
+                    return;
+                }
+
+                const newUser = {
+                    id: Date.now(),
+                    name: name,
+                    email: email,
+                    password: password,
+                    createdAt: new Date().toISOString()
+                };
+
+                users.push(newUser);
+                localStorage.setItem('elaniciaUsers', JSON.stringify(users));
+                
+                showMessage('signupMessage', 'Account created successfully! You can now sign in.', 'success');
+                document.getElementById('signupForm').reset();
+                setTimeout(() => {
+                    switchToLogin();
+                }, 2000);
+            }
+
+            setButtonLoading('signupBtn', false);
+        });
+
+        // Login Form Handler with Backend Integration
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            setButtonLoading('loginBtn', true);
+
+            try {
+                if (backendConnected) {
+                    // Try backend first
+                    const response = await fetch(`${API_BASE_URL}/login`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            email: email,
+                            password: password
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        // Login successful
+                        localStorage.setItem('elaniciaCurrentUser', JSON.stringify(data.user));
+                        showMessage('loginMessage', 'Login successful! Redirecting...', 'success');
+                        
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1000);
+                    } else {
+                        showMessage('loginMessage', data.error || 'Login failed', 'error');
+                    }
+                } else {
+                    throw new Error('Backend not available');
+                }
+            } catch (error) {
+                console.log('Using localStorage fallback for login');
+                // Fallback to localStorage
+                const users = JSON.parse(localStorage.getItem('elaniciaUsers') || '[]');
+                const user = users.find(u => u.email === email && u.password === password);
+                
+                if (user) {
+                    localStorage.setItem('elaniciaCurrentUser', JSON.stringify({
+                        id: user.id,
+                        name: user.name,
+                        email: user.email,
+                        loginTime: new Date().toISOString()
+                    }));
+                    
+                    showMessage('loginMessage', 'Login successful! Redirecting...', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                } else {
+                    showMessage('loginMessage', 'Invalid email or password!', 'error');
+                }
+            }
+
+            setButtonLoading('loginBtn', false);
+        });
+
+        console.log('🔐 Elanicia Authentication System with Backend Integration Loaded');
+    </script>
+</body>
+</html>

@@ -1,0 +1,1606 @@
+<!-- 
+================================================================================
+ELANICIA - ROYAL SWISS TIMEPIECES
+Main Index/Landing Page
+================================================================================
+
+This is the primary landing page for the Elanicia luxury watch and accessories brand.
+It features:
+- Welcome loading screen with luxury animations
+- Hero section with video background
+- Product showcases and collections
+- Authentication system integration
+- Shopping cart functionality
+- Dark/light theme toggle
+- Fully responsive design optimized for all devices including iPad Air
+
+================================================================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags for SEO and Responsive Design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elanicia - Royal Swiss Timepieces</title>
+    
+    <!-- Google Fonts - Luxury Typography Collection -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons for UI Elements -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom Theme Stylesheet -->
+    <link rel="stylesheet" href="beige-theme.css">
+</head>
+<body>
+
+    <!-- 
+    ================================================================================
+    WELCOME LOADING SCREEN
+    - Animated logo with luxury spinner
+    - Particle effects for premium visual appeal
+    - Automatically transitions to main content
+    ================================================================================
+    -->
+    <div id="welcomeScreen" class="welcome-screen">
+        <div class="welcome-content">
+            <!-- Logo Animation Section -->
+            <div class="logo-animation">
+                <h1 class="welcome-logo">Elanicia</h1>
+                <div class="logo-underline"></div>
+                <p class="welcome-tagline">Royal Swiss Heritage</p>
+            </div>
+            
+            <!-- Luxury Loading Animation -->
+            <div class="loading-animation">
+                <div class="luxury-spinner">
+                    <div class="spinner-ring ring-1"></div>
+                    <div class="spinner-ring ring-2"></div>
+                    <div class="spinner-ring ring-3"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Particles for Visual Enhancement -->
+        <div class="luxury-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </div>
+
+    <!-- 
+    ================================================================================
+    MAIN WEBSITE CONTENT
+    - Contains all page sections (hidden initially)
+    - Shown after welcome screen animation completes
+    - Includes header, hero, content sections, and footer
+    ================================================================================
+    -->
+    <div id="mainContent" class="main-content" style="display: none;">
+
+    <!-- 
+    ================================================================================
+    HEADER & NAVIGATION SECTION
+    - Main navigation with brand logo
+    - Authentication buttons (Sign In/Sign Up)
+    - Theme toggle for dark/light mode switching
+    - Shopping cart icon with live item counter
+    ================================================================================
+    -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <!-- Brand Logo and Tagline -->
+                <div class="logo">
+                    <h1 class="logo-text">Elanicia</h1>
+                    <span class="logo-tagline">Royal Swiss Heritage</span>
+                </div>
+                
+                <!-- Main Navigation Menu -->
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="watches.html" class="nav-link" id="watchesNav">Watches</a></li>
+                    <li><a href="accessories.html" class="nav-link">Accessories</a></li>
+                </ul>
+                
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <!-- User Actions Section -->
+                <div class="nav-actions">
+                    <!-- Authentication Buttons (shown when logged out) -->
+                    <button class="nav-action auth-btn-header" id="signInBtn" style="background: none; border: none; cursor: pointer;">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Sign In</span>
+                    </button>
+                    <button class="nav-action auth-btn-header" id="signUpBtn" style="background: none; border: none; cursor: pointer;">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Sign Up</span>
+                    </button>
+                    
+                    <!-- User Profile (shown when logged in) -->
+                    <a href="#" class="nav-action" id="userAction" style="display: none;">
+                        <i class="fas fa-user"></i>
+                        <span id="userActionText">Profile</span>
+                    </a>
+                    
+                    <!-- Logout Button (shown when logged in) -->
+                    <button class="nav-action" id="logoutBtn" style="display: none; background: none; border: none; cursor: pointer;">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </button>
+                    
+                    <!-- Shopping Cart with Item Counter -->
+                    <a href="cart.html" class="nav-action cart">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Menu -->
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 
+    ================================================================================
+    HERO SECTION
+    - Main landing section with video background
+    - Company statistics for credibility
+    - Scroll indicator for user engagement
+    ================================================================================
+    -->
+    <section id="home" class="hero">
+        <!-- Background Video for Luxury Atmosphere -->
+        <video autoplay muted loop playsinline preload="metadata" class="hero-video">
+            <source src="videos/start.mp4" type="video/mp4">
+        </video>
+        
+        <!-- Overlay for Text Readability -->
+        <div class="hero-overlay"></div>
+        
+        <!-- Hero Content with Marketing Message -->
+        <div class="hero-content">
+            <div class="hero-text">
+                <!-- Main Headline -->
+                <h1 class="premium-title">Premium Watches & Accessories</h1>
+                
+                <!-- Brand Tagline with Hover Effect -->
+                <div class="brand-tagline" id="taglineHover">
+                    <span class="tagline-text">Where Centuries of Heritage Meet Modern Artistry</span>
+                </div>
+                
+                <!-- Supporting Description -->
+                <p class="hero-subtitle swiss-mastery">Every second matters. Every timepiece tells a story of Swiss mastery, handcrafted perfection, and timeless elegance.</p>
+                
+                <!-- Brand Statistics for Trust Building -->
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">130+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50K+</span>
+                        <span class="stat-label">Customers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">Watch Models</span>
+                    </div>
+                </div>
+                
+                <!-- Primary Call-to-Action Button -->
+                <a href="watches.html" class="cta-button">Shop Now</a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator to Encourage Exploration -->
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- 
+    ================================================================================
+    ABOUT ELANICIA SECTION
+    - Brand story and heritage information
+    - Company history and craftsmanship details
+    - Trust indicators and certifications
+    - Interactive image showcase
+    ================================================================================
+    -->
+    <section id="about" class="about">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <span class="section-subtitle">Our Legacy</span>
+                <h2>The Elanicia Story</h2>
+            </div>
+            
+            <!-- Two-Column Layout: Content and Image -->
+            <div class="about-grid">
+                <!-- Left Column: Brand Story Content -->
+                <div class="about-content">
+                    <!-- Lead Paragraph -->
+                    <p class="lead-text">Founded in the heart of Switzerland in 1892, Elanicia has been the epitome of horological excellence for over 130 years.</p>
+                    
+                    <!-- Detailed Brand Description -->
+                    <p>Our master craftsmen combine centuries-old Swiss traditions with innovative techniques, creating timepieces that are not just instruments of time, but works of art that tell stories of heritage, precision, and uncompromising luxury.</p>
+                    
+                    <!-- Materials and Craftsmanship -->
+                    <p>Each Elanicia watch is meticulously handcrafted using the finest materials - from Swiss movements to Italian leather, from precious metals to rare gemstones.</p>
+                    
+                    <!-- Heritage Features Grid -->
+                    <div class="heritage-features">
+                        <div class="feature">
+                            <i class="fas fa-crown"></i>
+                            <h4>Royal Heritage</h4>
+                            <p>Trusted by royalty worldwide</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-gem"></i>
+                            <h4>Premium Materials</h4>
+                            <p>Only the finest components</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-certificate"></i>
+                            <h4>Swiss Certified</h4>
+                            <p>Authentic Swiss craftsmanship</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: Interactive Image Showcase -->
+                <div class="about-image about-image-hover">
+                    <!-- Image Stack for Cycling Animation -->
+                    <div class="about-image-stack">
+                        <img src="images/swiss-craftsman.jpg" alt="Swiss Craftsman" class="about-img-cycle" style="opacity: 1;">
+                        <img src="images/swiss2.jpg" alt="Swiss Heritage" class="about-img-cycle" style="opacity: 0;">
+                        <img src="images/swisswatch.jpg" alt="Swiss Watch" class="about-img-cycle" style="opacity: 0;">
+                    </div>
+                    <div class="image-overlay">
+                        <span>Master Craftsman</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    ================================================================================
+    CATEGORIES SECTION
+    - Main product categories with video backgrounds
+    - Interactive overlays with navigation links
+    - Men's, Women's, and Accessories collections
+    - Video content for visual engagement
+    ================================================================================
+    -->
+    <section class="categories">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <span class="section-subtitle">Collections</span>
+                <h2>Discover Our Categories</h2>
+            </div>
+            
+            <!-- Categories Grid Layout -->
+            <div class="categories-grid">
+                <!-- Men's Collection Card -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <!-- Video Background for Men's Collection -->
+                        <video muted loop autoplay playsinline preload="auto" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                            <source src="videos/mens-collection.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        
+                        <!-- Overlay with Category Information -->
+                        <div class="category-overlay">
+                            <h3>Men's Collection</h3>
+                            <p>Bold and sophisticated timepieces for the modern gentleman</p>
+                            <a href="watches.html" class="category-btn">Explore Men's</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Women's Collection Card -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <!-- Video Background for Women's Collection -->
+                        <video muted loop autoplay playsinline preload="auto" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                            <source src="videos/womens-collection.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        
+                        <!-- Overlay with Category Information -->
+                        <div class="category-overlay">
+                            <h3>Women's Collection</h3>
+                            <p>Elegant and graceful designs that complement feminine beauty</p>
+                            <a href="watches.html" class="category-btn">Explore Women's</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Luxury Accessories Card -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <!-- Video Background for Accessories Collection -->
+                        <video muted loop autoplay playsinline preload="auto" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                            <source src="videos/luxury-accessories.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        
+                        <!-- Overlay with Category Information -->
+                        <div class="category-overlay">
+                            <h3>Luxury Accessories</h3>
+                            <p>Exquisite jewelry and accessories to complete your elegant style</p>
+                            <a href="accessories.html" class="category-btn">Explore Accessories</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Royal Timepieces -->
+    <section id="watches" class="royal-timepieces">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Premium Collection</span>
+                <h2>Royal Timepieces</h2>
+                <p>Discover our exclusive collection of luxury watches and premium accessories</p>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card" data-category="accessories">
+                    <div class="product-badge premium">Premium</div>
+                    <div class="product-image">
+                        <img src="images/diamond-necklace.jpg" alt="Diamond Elite Necklace">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Diamond Elite Necklace</h3>
+                        <p>18k white gold, premium diamonds, luxury design</p>
+                        <span class="price">د.إ 125,999</span>
+                        <button class="add-to-cart">Add to Collection</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="mens">
+                    <div class="product-badge limited">Limited Edition</div>
+                    <div class="product-image">
+                        <img src="images/platinum-watch.jpg" alt="Platinum Heritage">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Platinum Heritage</h3>
+                        <p>Platinum case, sapphire crystal, limited to 100 pieces</p>
+                        <span class="price">د.إ 195,999</span>
+                        <button class="add-to-cart">Add to Collection</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="accessories">
+                    <div class="product-badge">Exclusive</div>
+                    <div class="product-image">
+                        <img src="images/emerald-earrings.jpg" alt="Royal Emerald Earrings">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Royal Emerald Earrings</h3>
+                        <p>18k gold, natural emeralds, handcrafted design</p>
+                        <span class="price">د.إ 85,999</span>
+                        <button class="add-to-cart">Add to Collection</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="womens">
+                    <div class="product-badge new-arrival">New Arrival</div>
+                    <div class="product-image">
+                        <img src="images/rose-gold-watch.jpg" alt="Rose Gold Elegance">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Rose Gold Elegance</h3>
+                        <p>Rose gold case, diamond markers, Swiss movement</p>
+                        <span class="price">د.إ 75,999</span>
+                        <button class="add-to-cart">Add to Collection</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="mens">
+                    <div class="product-badge premium">Premium</div>
+                    <div class="product-image">
+                        <img src="images/sapphire-ring.jpg" alt="Royal Sapphire Ring">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Royal Sapphire Ring</h3>
+                        <p>Platinum setting, blue sapphire, diamond accents</p>
+                        <span class="price">د.إ 95,999</span>
+                        <button class="add-to-cart">Add to Collection</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Sellers -->
+    <section class="best-sellers">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Most Popular</span>
+                <h2>Best Sellers</h2>
+                <p>Our customers' favorite luxury timepieces and accessories</p>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-badge">Best Seller</div>
+                    <div class="product-image">
+                        <img src="images/classic-steel-watch.jpg" alt="Classic Steel Master">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Classic Steel Master</h3>
+                        <p>Stainless steel case, automatic movement, water resistant</p>
+                        <span class="price">د.إ 35,999</span>
+                        <button class="add-to-cart">Add to Collection</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badge">Bestseller</div>
+                    <div class="product-image">
+                        <img src="images/pearl-necklace.jpg" alt="Pearl Elegance Necklace">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Pearl Elegance Necklace</h3>
+                        <p>Cultured pearls, 18k gold clasp, luxury finish</p>
+                        <span class="price">د.إ 45,999</span>
+                        <button class="add-to-cart">Add to Collection</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badge">Popular</div>
+                    <div class="product-image">
+                        <img src="images/chronograph-watch.jpg" alt="Sport Chronograph">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Sport Chronograph</h3>
+                        <p>Multi-function chronograph, titanium case, sport design</p>
+                        <span class="price">د.إ 52,999</span>
+                        <button class="add-to-cart">Add to Collection</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badge">Trending</div>
+                    <div class="product-image">
+                        <img src="images/gold-bracelet.jpg" alt="Gold Chain Bracelet">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Gold Chain Bracelet</h3>
+                        <p>18k gold chain, premium craftsmanship, adjustable size</p>
+                        <span class="price">د.إ 28,999</span>
+                        <button class="add-to-cart">Add to Collection</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badge">Best Seller</div>
+                    <div class="product-image">
+                        <img src="images/ladies-watch.jpg" alt="Ladies Elegance">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Ladies Elegance</h3>
+                        <p>Mother-of-pearl dial, diamond markers, elegant design</p>
+                        <span class="price">د.إ 45,999</span>
+                        <button class="add-to-cart">Add to Collection</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badge">Popular</div>
+                    <div class="product-image">
+                        <img src="images/ruby-ring.jpg" alt="Ruby Passion Ring">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Ruby Passion Ring</h3>
+                        <p>Natural ruby, white gold setting, luxury gift box</p>
+                        <span class="price">د.إ 65,999</span>
+                        <button class="add-to-cart">Add to Collection</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manufacturing Info -->
+    <section class="manufacturing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Craftsmanship</span>
+                <h2>Where Excellence is Born</h2>
+            </div>
+            
+            <div class="manufacturing-grid">
+                <div class="manufacturing-card">
+                    <div class="manufacturing-icon">
+                        <img src="images/swiss-flag.jpg" alt="Swiss Flag">
+                    </div>
+                    <h3>Swiss Movements</h3>
+                    <p>Precision-engineered in Geneva workshops using traditional Swiss techniques passed down through generations.</p>
+                    <span class="location">Geneva, Switzerland</span>
+                </div>
+                
+                <div class="manufacturing-card">
+                    <div class="manufacturing-icon">
+                        <img src="images/italian-leather.jpg" alt="Italian Leather">
+                    </div>
+                    <h3>Italian Leather</h3>
+                    <p>Hand-selected premium leather from the finest tanneries in Tuscany, crafted by master leather artisans.</p>
+                    <span class="location">Florence, Italy</span>
+                </div>
+                
+                <div class="manufacturing-card">
+                    <div class="manufacturing-icon">
+                        <img src="images/german-precision.jpg" alt="German Precision">
+                    </div>
+                    <h3>Precision Tools</h3>
+                    <p>Advanced manufacturing equipment and precision tools from Germany ensure perfect assembly and quality.</p>
+                    <span class="location">Munich, Germany</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Collection -->
+    <section id="accessories" class="premium-collection">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Exclusive</span>
+                <h2>Premium Collection</h2>
+                <p>Our most luxurious and expensive pieces, crafted for true connoisseurs</p>
+            </div>
+            
+            <div class="premium-grid">
+                <div class="premium-card">
+                    <div class="premium-badge">Most Expensive</div>
+                    <div class="premium-image">
+                        <video muted loop autoplay playsinline>
+                            <source src="videos/premium-collection.mp4" type="video/mp4">
+                        </video>
+                        <div class="premium-overlay">
+                            <h3>Grand Complication Platinum</h3>
+                            <p>The pinnacle of horological artistry with perpetual calendar, moon phases, and minute repeater</p>
+                            <span class="premium-price">د.إ 250,999</span>
+                            <button class="premium-btn">Request Consultation</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="premium-info">
+                    <h3>Masterpiece Collection</h3>
+                    <p>Each piece in our premium collection represents the absolute pinnacle of Swiss watchmaking excellence. These extraordinary timepieces are created in extremely limited quantities, with some pieces taking over 12 months to complete.</p>
+                    
+                    <div class="premium-features">
+                        <div class="premium-feature">
+                            <i class="fas fa-star"></i>
+                            <span>Limited to 50 pieces worldwide</span>
+                        </div>
+                        <div class="premium-feature">
+                            <i class="fas fa-certificate"></i>
+                            <span>Individually numbered and certified</span>
+                        </div>
+                        <div class="premium-feature">
+                            <i class="fas fa-crown"></i>
+                            <span>Exclusive VIP service included</span>
+                        </div>
+                        <div class="premium-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Lifetime warranty and service</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="premium-contact">Schedule Private Viewing</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-logo">Elanicia</h3>
+                    <p>Royal Swiss luxury timepieces crafted with precision and passion since 1892.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Collections</h4>
+                    <ul>
+                        <li><a href="#watches">Men's Watches</a></li>
+                        <li><a href="#watches">Women's Watches</a></li>
+                        <li><a href="#accessories">Luxury Accessories</a></li>
+                        <li><a href="#accessories">Premium Collection</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Watch Repair</a></li>
+                        <li><a href="#">Authentication</a></li>
+                        <li><a href="#">Custom Engraving</a></li>
+                        <li><a href="#">VIP Concierge</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-phone"></i> +971 4 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@elanicia.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Dubai Mall, Dubai, UAE</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Elanicia. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    </div> <!-- End of main-content -->
+
+    <script src="royal.js"></script>
+    <script src="auth.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        // Quick View Popup for products
+        function showQuickViewPopup(product) {
+            // Create popup if it doesn't exist
+            let popup = document.getElementById('quickViewPopup');
+            if (!popup) {
+                popup = document.createElement('div');
+                popup.id = 'quickViewPopup';
+                popup.className = 'watch-popup-modal';
+                popup.innerHTML = `
+                    <div class="watch-popup-content">
+                        <span class="watch-popup-close">&times;</span>
+                        <div class="watch-popup-body"> 
+                            <div class="watch-popup-image">
+                                <img id="quickViewImage" src="" alt="">
+                            </div>
+                            <div class="watch-popup-details">
+                                <h2 id="quickViewName"></h2>
+                                <p id="quickViewDescription"></p>
+                                <div class="popup-specs">
+                                    <div class="spec-item">
+                                        <strong>Manufactured:</strong> <span id="quickViewManufacturer">Switzerland</span>
+                                    </div>
+                                    <div class="spec-item">
+                                        <strong>Stock Status:</strong> <span id="quickViewStock" class="in-stock">In Stock</span>
+                                    </div>
+                                    <div class="spec-item">
+                                        <strong>Colors Available:</strong> <div id="quickViewColors"></div>
+                                    </div>
+                                </div>
+                                <div class="popup-price" id="quickViewPrice"></div>
+                                <button class="popup-add-cart" onclick="addQuickViewToCart()">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(popup);
+                
+                popup.querySelector('.watch-popup-close').onclick = () => {
+                    popup.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                };
+                
+                popup.onclick = function(e) {
+                    if (e.target === popup) {
+                        popup.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                };
+            }
+            
+            // Set content
+            document.getElementById('quickViewImage').src = product.image;
+            document.getElementById('quickViewName').textContent = product.name;
+            document.getElementById('quickViewDescription').textContent = product.description;
+            document.getElementById('quickViewPrice').textContent = product.price;
+            
+            const colors = ['Silver', 'Gold', 'Rose Gold', 'Black'];
+            document.getElementById('quickViewColors').innerHTML = colors.map(c => 
+                `<span class="color-option">${c}</span>`
+            ).join('');
+            
+            window.currentQuickViewProduct = {
+                id: 'prod-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9),
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                category: product.category,
+                manufacturer: 'Switzerland',
+                stock: 'In Stock',
+                colors: colors
+            };
+            
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function addQuickViewToCart() {
+            if (window.currentQuickViewProduct && typeof addToCart === 'function') {
+                addToCart(window.currentQuickViewProduct);
+            }
+            document.getElementById('quickViewPopup').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        document.querySelectorAll('.quick-view').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const productCard = this.closest('.product-card');
+                const productName = productCard.querySelector('h3').textContent;
+                const productDesc = productCard.querySelector('p').textContent;
+                const productPrice = productCard.querySelector('.price').textContent;
+                const productImage = productCard.querySelector('img').src;
+                const productCategory = productCard.getAttribute('data-category') || 'Accessory';
+                
+                showQuickViewPopup({
+                    name: productName,
+                    description: productDesc,
+                    price: productPrice,
+                    image: productImage,
+                    category: productCategory
+                });
+            });
+        });
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('elaniciaTheme') || 'light';
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            
+            // Update icon
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            
+            // Save theme preference
+            localStorage.setItem('elaniciaTheme', isDark ? 'dark' : 'light');
+        });
+
+        // Add to Cart from index page
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const productCard = this.closest('.product-card');
+                const productName = productCard.querySelector('h3').textContent;
+                const productPrice = productCard.querySelector('.price').textContent;
+                const productImage = productCard.querySelector('img').src;
+                const productCategory = productCard.getAttribute('data-category') || 'Accessory';
+                
+                const product = {
+                    id: 'prod-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9),
+                    name: productName,
+                    price: productPrice,
+                    image: productImage,
+                    category: productCategory,
+                    manufacturer: 'Switzerland',
+                    stock: 'In Stock',
+                    colors: ['Silver', 'Gold', 'Rose Gold']
+                };
+                
+                if (typeof addToCart === 'function') {
+                    addToCart(product);
+                } else {
+                    const cartCount = document.querySelector('.cart-count');
+                    if (cartCount) {
+                        cartCount.textContent = parseInt(cartCount.textContent || 0) + 1;
+                    }
+                }
+            });
+        });
+        
+    </script>
+
+    <style>
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: linear-gradient(45deg, #8b6914, #d4af37);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            font-size: 1.2rem;
+            margin-left: 1rem;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(180deg) scale(1.1);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .header {
+            background: rgba(26, 26, 26, 0.95);
+            border-bottom-color: #d4af37;
+        }
+
+        body.dark-mode .nav-link {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .product-card,
+        body.dark-mode .category-card {
+            background: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        /* Quick View Popup */
+        .quick-view-popup {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+    </style>
+
+    <!-- Login/Signup Modal -->
+    <div id="authModal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span class="auth-close">&times;</span>
+            
+            <!-- Login Form -->
+            <div id="loginFormModal" class="auth-form-modal active">
+                <h2 class="modal-title">Welcome Back</h2>
+                <p class="modal-subtitle">Sign in to your account</p>
+                
+                <div class="modal-hint">Please enter your details below</div>
+                
+                <div id="loginMessageModal"></div>
+
+                <form id="loginFormMain">
+                    <div class="modal-form-group">
+                        <label for="loginEmailModal">Email Address</label>
+                        <input type="email" id="loginEmailModal" required>
+                    </div>
+
+                    <div class="modal-form-group">
+                        <label for="loginPasswordModal">Password</label>
+                        <input type="password" id="loginPasswordModal" required>
+                    </div>
+
+                    <button type="submit" class="modal-auth-btn">Sign In</button>
+                </form>
+
+                <div class="modal-switch">
+                    Don't have an account? <a href="#" onclick="switchToSignupModal()">Sign up here</a>
+                </div>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div id="signupFormModal" class="auth-form-modal">
+                <h2 class="modal-title">Create Account</h2>
+                <p class="modal-subtitle">Join the Elanicia family</p>
+                
+                <div class="modal-hint">Please enter your details to create your account</div>
+                
+                <div id="signupMessageModal"></div>
+
+                <form id="signupFormMain">
+                    <div class="modal-form-group">
+                        <label for="signupNameModal">Full Name</label>
+                        <input type="text" id="signupNameModal" required>
+                    </div>
+
+                    <div class="modal-form-group">
+                        <label for="signupEmailModal">Email Address</label>
+                        <input type="email" id="signupEmailModal" required>
+                    </div>
+
+                    <div class="modal-form-group">
+                        <label for="signupPasswordModal">Password</label>
+                        <input type="password" id="signupPasswordModal" required minlength="6">
+                    </div>
+
+                    <div class="modal-form-group">
+                        <label for="signupConfirmPasswordModal">Confirm Password</label>
+                        <input type="password" id="signupConfirmPasswordModal" required minlength="6">
+                    </div>
+
+                    <button type="submit" class="modal-auth-btn">Create Account</button>
+                </form>
+
+                <div class="modal-switch">
+                    Already have an account? <a href="#" onclick="switchToLoginModal()">Sign in here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Modal Styles */
+        .auth-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .auth-modal-content {
+            background: white;
+            margin: 6% auto;
+            padding: 0;
+            border-radius: 14px;
+            width: 90%;
+            max-width: 420px;
+            position: relative;
+            box-shadow: 0 18px 36px rgba(139, 105, 20, 0.18);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .auth-close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .auth-close:hover {
+            color: #8b6914;
+        }
+        
+
+        .auth-form-modal {
+            display: none;
+            padding: 1.2rem;
+            padding-top: 1rem;
+        }
+
+        .auth-form-modal.active {
+            display: block;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #3d3427;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .modal-subtitle {
+            color: #6b5b47;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .demo-notice {
+            background: #e8f5e8;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #2d5a2d;
+        }
+
+        .modal-form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #3d3427;
+            font-weight: 500;
+        }
+
+        .modal-form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e8e3d8;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #faf8f5;
+        }
+
+        .modal-form-group input:focus {
+            outline: none;
+            border-color: #8b6914;
+            background: white;
+        }
+
+        .modal-auth-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(45deg, #8b6914, #d4af37);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .modal-auth-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 105, 20, 0.3);
+        }
+
+        .modal-switch {
+            text-align: center;
+            color: #6b5b47;
+        }
+
+        .modal-switch a {
+            color: #8b6914;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .modal-switch a:hover {
+            text-decoration: underline;
+        }
+
+        .message {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Hero Video Background */
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #8b6914;
+            font-weight: 500;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            animation: fadeInUp 0.8s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        .hero-subtitle:hover {
+            color: #d4af37;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6), 0 0 30px rgba(212, 175, 55, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* About Image Hover Animation */
+        .about-image-hover {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .about-image-stack {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .about-img-cycle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .about-image-alt {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+
+        /* Auth Form Modal Specific Styles */
+        .auth-form-modal {
+            padding: 1.2rem;
+            display: none;
+        }
+
+        .auth-form-modal.active {
+            display: block;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: #3d3427;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .modal-subtitle {
+            color: #6b5b47;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .modal-hint {
+            background: transparent;
+            padding: 6px 0;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            color: #6b5b47;
+            text-align: center;
+        }
+
+        /* Auth Button Header Styles */
+        .auth-btn-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #d4af37;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid #d4af37;
+        }
+
+        .auth-btn-header:hover {
+            background: rgba(212, 175, 55, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), inset 0 0 10px rgba(212, 175, 55, 0.3);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+        }
+
+        .auth-btn-header i {
+            font-size: 1.1rem;
+        }
+
+        .auth-btn-header span {
+            font-size: 0.95rem;
+        }
+
+        /* Premium Title Styling */
+        .premium-title {
+            color: #d4af37;
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 
+                0 0 10px rgba(212, 175, 55, 0.4),
+                0 0 20px rgba(212, 175, 55, 0.2);
+            animation: heroTitleAppear 1s ease-out 0.5s forwards, goldenGlow 3s ease-in-out infinite 1.5s;
+            opacity: 0;
+        }
+
+        /* Hero Section Tagline Animation */
+        .tagline-text {
+            color: #d4af37;
+            font-weight: 500;
+            animation: taglineSlideIn 1s ease-out, goldenGlow 3s ease-in-out infinite 0.5s;
+        }
+
+        /* Hero Stats Animation */
+        .hero-stats {
+            animation: statsSlideUp 1.2s ease-out 0.8s forwards;
+            opacity: 0;
+        }
+
+        .stat {
+            animation: statBounce 0.8s ease-out 1s backwards;
+        }
+
+        .stat:nth-child(2) {
+            animation-delay: 1.2s;
+        }
+
+        .stat:nth-child(3) {
+            animation-delay: 1.4s;
+        }
+
+        /* CTA Button Animation */
+        .cta-button {
+            animation: ctaButtonAppear 1s ease-out 1.2s forwards;
+            opacity: 0;
+        }
+
+        /* Collection Filter Tabs */
+        .collection-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            animation: filtersAppear 0.8s ease-out;
+        }
+
+        .filter-btn {
+            padding: 12px 28px;
+            border: 2px solid #d4af37;
+            background: transparent;
+            color: #d4af37;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+        }
+
+        .filter-btn:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(45deg, #8b6914, #d4af37);
+            color: white;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+            animation: filterActive 0.4s ease-out;
+        }
+
+        /* Product Card Filter Animation */
+        .product-card {
+            animation: cardAppear 0.5s ease-out;
+        }
+
+        .product-card.hidden {
+            display: none;
+        }
+
+        /* Video Display Fix */
+        .category-image video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 1;
+        }
+
+        .premium-collection .premium-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 1;
+        }
+        
+        
+
+        @media (max-width: 768px) {
+            .auth-btn-header span {
+                display: none;
+            }
+
+            .auth-modal-content {
+                width: 95%;
+                margin: 12% auto;
+                max-width: 95%;
+            }
+
+            .auth-form-modal {
+                padding: 1rem;
+            }
+
+            .modal-title {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* Perfect Responsive Design for Inspection - Index to Pages */
+        @media (max-width: 1440px) {
+            .hero {
+                min-height: 90vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .hero {
+                min-height: 85vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 3.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .hero {
+                min-height: 80vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero {
+                min-height: 75vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 70vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                min-height: 65vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 60vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+            
+            .hero-content p {
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .hero {
+                min-height: 55vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.4rem;
+            }
+            
+            .hero-content p {
+                font-size: 0.75rem;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .hero {
+                min-height: 50vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 0.7rem;
+            }
+        }
+        
+        /* iPad Air Navigation - Perfect Layout with Small Sign In/Sign Up */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .nav-actions {
+                gap: 0.1rem;
+                align-items: center;
+            }
+
+            .nav-action.auth-btn-header {
+                padding: 0.4rem 0.7rem !important;
+                font-size: 0.75rem !important;
+                border-radius: 0px !important;
+                background: transparent !important;
+                border: none !important;
+                min-width: auto !important;
+                white-space: nowrap !important;
+                display: flex !important;
+                margin-left: 1rem !important;
+            }
+
+            .nav-action.auth-btn-header span {
+                display: inline !important;
+                font-weight: 500 !important;
+            }
+
+            #signUpBtn {
+                display: none !important;
+            }
+
+            .theme-toggle {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 15px !important;
+            }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,3092 @@
+<!-- 
+================================================================================
+ELANICIA WATCHES COLLECTION
+Luxury Timepieces Catalog
+================================================================================
+
+Features:
+ Premium Watch Collection
+ Men's & Women's Watches
+ Limited Edition Pieces
+ Product Search & Filter
+ Shopping Cart Integration
+ Responsive Design
+================================================================================
+-->
+
+<!DOCTYPE html>
+<!-- Head Section - Meta tags and external resources -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watches - Elanicia | Royal Swiss Timepieces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="beige-theme.css">
+    <style>
+        .watches-page-header {
+            padding-top: 120px;
+            min-height: 70vh;
+            background: linear-gradient(135deg, rgba(250, 248, 245, 0.95) 0%, rgba(230, 220, 200, 0.8) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .watches-hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .watches-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+
+        .watches-hero-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        .watches-title-glow:hover,
+        .watches-subtitle-glow:hover,
+        .watches-tagline-glow:hover {
+            text-shadow: 
+                0 0 30px rgba(212, 175, 55, 0.8),
+                0 0 60px rgba(212, 175, 55, 0.6),
+                0 0 90px rgba(212, 175, 55, 0.4);
+            transition: text-shadow 0.3s ease;
+        }
+
+        .watches-page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .watches-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 60px 20px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .watches-hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 
+                0 0 20px rgba(212, 175, 55, 0.3),
+                0 0 40px rgba(212, 175, 55, 0.15);
+            animation: titleSlideDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) ease-out;
+        }
+
+        @keyframes titleSlideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .watches-subtitle {
+            font-size: 1.3rem;
+            color: #8b6914;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            animation: subtitleFadeIn 0.8s ease-out 0.2s forwards;
+            opacity: 0;
+            letter-spacing: 1px;
+        }
+
+        @keyframes subtitleFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .watches-tagline {
+            font-size: 1.1rem;
+            color: #6b5b47;
+            margin-bottom: 2.5rem;
+            font-style: italic;
+            font-weight: 400;
+            animation: subtitleFadeIn 0.8s ease-out 0.3s forwards;
+            opacity: 0;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* Model Showcase Section */
+        .model-showcase {
+            background: linear-gradient(135deg, #f5f0eb 0%, #faf8f4 100%);
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+            width: 100%;
+            position: relative;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            animation: showcaseFadeIn 0.8s ease-out 0.5s forwards;
+            opacity: 0;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            justify-content: center;
+            height: auto;
+        }
+
+        @keyframes showcaseFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .showcase-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: cardFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes cardFloat {
+            0%, 100% {
+                transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+            }
+            25% {
+                transform: translateY(-8px) rotateX(2deg) rotateY(5deg);
+            }
+            50% {
+                transform: translateY(-12px) rotateX(0deg) rotateY(0deg);
+            }
+            75% {
+                transform: translateY(-8px) rotateX(-2deg) rotateY(-5deg);
+            }
+        }
+
+        .showcase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            z-index: 1;
+            border-radius: 20px;
+        }
+
+        .showcase-card:hover::before {
+            opacity: 1;
+        }
+
+        .showcase-card::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, #d4af37, #8b6914, #d4af37);
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            z-index: 0;
+            animation: borderRotate 4s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .showcase-card:hover {
+            transform: translateY(-20px) scale(1.03) rotateX(5deg) rotateY(3deg);
+            box-shadow: 0 30px 90px rgba(212, 175, 55, 0.4);
+            animation: cardPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes cardPulse {
+            0%, 100% {
+                box-shadow: 0 30px 90px rgba(212, 175, 55, 0.4);
+            }
+            50% {
+                box-shadow: 0 40px 120px rgba(212, 175, 55, 0.6);
+            }
+        }
+
+        .model-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 650px; /* Increased from 550px for taller desktop images */
+            overflow: hidden;
+            background: linear-gradient(135deg, #f0ebe0 0%, #e8dfd0 100%);
+        }
+
+        .model-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            min-height: 650px; /* Increased from 550px for taller desktop images */
+            max-height: 1000px; /* Increased from 900px */
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .showcase-card:hover .model-image-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.8) 0%, rgba(61, 52, 39, 0.85) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .showcase-card:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .image-overlay h3 {
+            font-family: 'Cinzel', serif;
+            color: #f5f0eb;
+            font-size: 1.8rem;
+            margin-bottom: 0;
+            font-weight: 600;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .collection-selector {
+            display: none;
+        }
+
+        .collection-btn {
+            padding: 14px 32px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: 2px solid #d4af37;
+            background: transparent;
+            color: #d4af37;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .collection-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+            transition: left 0.6s ease;
+            z-index: 1;
+        }
+
+        .collection-btn:hover::before {
+            left: 100%;
+        }
+
+        .collection-btn:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 
+                0 8px 25px rgba(212, 175, 55, 0.4),
+                0 0 20px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            letter-spacing: 2px;
+        }
+
+        .collection-btn.active {
+            background: linear-gradient(135deg, #8b6914 0%, #d4af37 100%);
+            color: white;
+            box-shadow: 
+                0 10px 30px rgba(212, 175, 55, 0.5),
+                0 0 25px rgba(212, 175, 55, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            animation: buttonGlow 0.6s ease-out;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes buttonGlow {
+            0% { 
+                box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+                transform: scale(0.95);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+                transform: scale(1.05);
+            }
+            100% {
+                box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5), 0 0 25px rgba(212, 175, 55, 0.4);
+                transform: scale(1);
+            }
+        }
+
+        .collection-section {
+            display: block;
+            animation: fadeInSection 0.8s ease-out;
+            padding: 3rem 1rem 3rem 2rem;
+            position: relative;
+        }
+
+        .collection-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            animation: sectionFloat 15s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes sectionFloat {
+            0%, 100% {
+                transform: translate(0px, 0px) rotate(0deg);
+            }
+            33% {
+                transform: translate(15px, -10px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-15px, 10px) rotate(240deg);
+            }
+        }
+
+        @keyframes fadeInSection {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .collection-section.active {
+            display: block;
+            animation: sectionSlideIn 0.6s ease-out;
+        }
+
+        @keyframes sectionSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInSection {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .collection-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            animation: headerFadeIn 0.8s ease-out;
+        }
+
+        @keyframes headerFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .collection-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #d4af37;
+            margin-bottom: 0.8rem;
+            letter-spacing: 1.5px;
+            animation: titleGlow 0.8s ease-out;
+        }
+
+        @keyframes titleGlow {
+            from {
+                opacity: 0;
+                text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+            }
+            to {
+                opacity: 1;
+                text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            }
+        }
+
+        .collection-description {
+            font-size: 1.1rem;
+            color: #6b5b47;
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+            animation: descriptionFadeIn 0.8s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        @keyframes descriptionFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .watches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+            animation: gridFadeIn 0.8s ease-out;
+            margin-right: auto;
+            margin-left: auto;
+            justify-content: center;
+            max-width: 1400px;
+            padding: 0 2rem;
+        }
+
+        @keyframes gridFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .watch-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: watchCardFloat 10s ease-in-out infinite;
+        }
+
+        @keyframes watchCardFloat {
+            0%, 100% {
+                transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+            }
+            25% {
+                transform: translateY(-6px) rotateX(1deg) rotateY(3deg);
+            }
+            50% {
+                transform: translateY(-10px) rotateX(0deg) rotateY(0deg);
+            }
+            75% {
+                transform: translateY(-6px) rotateX(-1deg) rotateY(-3deg);
+            }
+        }
+
+        .watch-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            z-index: 1;
+            border-radius: 15px;
+        }
+
+        .watch-card:hover::before {
+            opacity: 1;
+        }
+
+        .watch-card::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #d4af37, #8b6914, #d4af37);
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            z-index: 0;
+            animation: watchBorderRotate 5s linear infinite;
+        }
+
+        @keyframes watchBorderRotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .watch-card:hover {
+            transform: translateY(-15px) scale(1.02) rotateX(3deg) rotateY(2deg);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+            animation: watchCardPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes watchCardPulse {
+            0%, 100% {
+                box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+            }
+            50% {
+                box-shadow: 0 30px 90px rgba(212, 175, 55, 0.5);
+            }
+        }
+
+        .watch-card:nth-child(1) { animation-delay: 0s; }
+        .watch-card:nth-child(2) { animation-delay: 0.1s; }
+        .watch-card:nth-child(3) { animation-delay: 0.2s; }
+        .watch-card:nth-child(4) { animation-delay: 0.3s; }
+        .watch-card:nth-child(5) { animation-delay: 0.4s; }
+        .watch-card:nth-child(6) { animation-delay: 0.5s; }
+        .watch-card:nth-child(7) { animation-delay: 0.6s; }
+        .watch-card:nth-child(8) { animation-delay: 0.7s; }
+        .watch-card:nth-child(9) { animation-delay: 0.8s; }
+        .watch-card:nth-child(10) { animation-delay: 0.9s; }
+        .watch-card:nth-child(11) { animation-delay: 1s; }
+        .watch-card:nth-child(12) { animation-delay: 1.1s; }
+
+        @keyframes cardSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .watch-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0) 0%, rgba(212, 175, 55, 0.1) 100%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .watch-card:hover::before {
+            opacity: 1;
+        }
+
+        .watch-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 
+                0 20px 50px rgba(212, 175, 55, 0.3),
+                0 0 40px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-color: rgba(212, 175, 55, 0.8);
+        }
+
+        .watch-image {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            min-height: 380px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f5f0eb 0%, #e8dcc8 100%);
+            cursor: pointer;
+        }
+
+        .watch-image::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        .watch-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .watch-card:hover .watch-image img {
+            transform: scale(1.15) rotate(2deg);
+        }
+
+        .watch-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, #8b6914, #d4af37);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            z-index: 5;
+            box-shadow: 0 4px 12px rgba(139, 105, 20, 0.3);
+        }
+
+        .watch-info {
+            padding: 1.8rem;
+        }
+
+        .watch-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: #3d3427;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .watch-description {
+            color: #6b5b47;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .watch-specs {
+            background: rgba(212, 175, 55, 0.08);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #8b6914;
+            line-height: 1.8;
+        }
+
+        .watch-price {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: #d4af37;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .watch-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #8b6914, #d4af37);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .watch-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .watch-btn:hover::before {
+            left: 100%;
+        }
+
+        .watch-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 12px 25px rgba(139, 105, 20, 0.4),
+                0 0 20px rgba(212, 175, 55, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            letter-spacing: 2px;
+        }
+
+        .watch-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .back-to-home {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, rgba(250, 248, 245, 0.5) 0%, rgba(230, 220, 200, 0.3) 100%);
+            margin-top: 4rem;
+        }
+
+        .back-to-home a {
+            display: inline-block;
+            padding: 14px 40px;
+            border: 2px solid #d4af37;
+            color: #d4af37;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .back-to-home a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .back-to-home a:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .back-to-home a:hover {
+            background: linear-gradient(45deg, #8b6914, #d4af37);
+            color: white;
+            box-shadow: 
+                0 12px 35px rgba(212, 175, 55, 0.4),
+                0 0 30px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        /* Enhanced Aesthetic Animations */
+        .watch-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: #3d3427;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.4s ease;
+        }
+
+        .watch-card:hover .watch-name {
+            color: #d4af37;
+            letter-spacing: 1px;
+        }
+
+        .watch-description {
+            color: #6b5b47;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            transition: all 0.4s ease;
+        }
+
+        .watch-card:hover .watch-description {
+            color: #8b6914;
+        }
+
+        .watch-specs {
+            background: rgba(212, 175, 55, 0.08);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #8b6914;
+            line-height: 1.8;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .watch-card:hover .watch-specs {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.6);
+        }
+
+        /* Badge pulse animation */
+        .watch-badge {
+            animation: badgePulseGlow 2.5s ease-in-out infinite;
+        }
+
+        @keyframes badgePulseGlow {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 4px 12px rgba(139, 105, 20, 0.3);
+            }
+            50% {
+                transform: scale(1.08);
+                box-shadow: 0 8px 25px rgba(212, 175, 55, 0.7), 0 0 15px rgba(212, 175, 55, 0.5);
+            }
+        }
+
+        /* Price glow animation */
+        .watch-price {
+            animation: priceShine 3s ease-in-out infinite;
+        }
+
+        @keyframes priceShine {
+            0%, 100% {
+                color: #d4af37;
+                text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            }
+            50% {
+                color: #f4d03f;
+                text-shadow: 0 0 30px rgba(212, 175, 55, 0.8), 0 0 50px rgba(212, 175, 55, 0.4);
+            }
+        }
+
+        /* Collection title animation */
+        .collection-title {
+            animation: titleGlowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlowPulse {
+            0%, 100% {
+                color: #d4af37;
+                text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            }
+            50% {
+                color: #f4d03f;
+                text-shadow: 0 0 40px rgba(212, 175, 55, 0.8), 0 0 60px rgba(212, 175, 55, 0.4);
+            }
+        }
+
+        /* Watch image brightness animation */
+        .watch-image img {
+            animation: imageBrightness 4s ease-in-out infinite;
+        }
+
+        @keyframes imageBrightness {
+            0%, 100% {
+                filter: brightness(1) saturate(1);
+            }
+            50% {
+                filter: brightness(1.1) saturate(1.15);
+            }
+        }
+
+        /* Enhanced card animations with scroll effects */
+        .watch-card {
+            animation: cardSlideIn 0.6s ease-out backwards;
+            transition: all 0.4s ease;
+        }
+
+        .watch-card:nth-child(1) { animation-delay: 0s; }
+        .watch-card:nth-child(2) { animation-delay: 0.1s; }
+        .watch-card:nth-child(3) { animation-delay: 0.2s; }
+        .watch-card:nth-child(4) { animation-delay: 0.3s; }
+        .watch-card:nth-child(5) { animation-delay: 0.4s; }
+        .watch-card:nth-child(6) { animation-delay: 0.5s; }
+        .watch-card:nth-child(7) { animation-delay: 0.6s; }
+        .watch-card:nth-child(8) { animation-delay: 0.7s; }
+
+        /* Scroll reveal animations */
+        .collection-header {
+            animation: slideInFromLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .watches-grid {
+            animation: gridSlideUp 0.8s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        @keyframes gridSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Enhanced info styling */
+        .watch-info {
+            padding: 1.8rem;
+            transition: all 0.4s ease;
+        }
+
+        .watch-card:hover .watch-info {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(212, 175, 55, 0.02) 100%);
+        }
+
+        /* Perfect Responsive Design */
+        @media (max-width: 1440px) {
+            .watches-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.8rem;
+            }
+            
+            .watches-hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .watches-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .watches-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .watches-hero-title {
+                font-size: 2.6rem;
+            }
+            
+            .watches-subtitle {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .watches-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.3rem;
+            }
+            
+            .watches-hero-title {
+                font-size: 2.4rem;
+            }
+            
+            .watches-subtitle {
+                font-size: 0.95rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .watches-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.2rem;
+            }
+            
+            .watches-hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .watches-subtitle {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Tablet and Laptop Optimizations */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .watches-page-header {
+                min-height: 80vh;
+            }
+            
+            .watches-hero-title {
+                font-size: 2.8rem;
+                margin-bottom: 1.2rem;
+                text-align: center;
+            }
+            
+            .watches-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2.5rem;
+                text-align: center;
+            }
+            
+            .showcase-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                max-width: 800px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .showcase-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            
+            .model-image-wrapper {
+                min-height: 550px; /* Increased from 500px */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .model-image-wrapper img {
+                min-height: 550px; /* Increased from 500px */
+                max-height: 600px;
+                object-fit: contain;
+            }
+            
+            .image-overlay h3 {
+                font-size: 2rem;
+            }
+            
+            .image-overlay p {
+                font-size: 1rem;
+            }
+            
+            .watches-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .watch-card {
+                max-width: 350px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .watch-image {
+                height: 220px;
+                border-radius: 15px;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .watch-info {
+                text-align: center;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .watch-name {
+                text-align: center;
+            }
+            
+            .watch-price {
+                text-align: center;
+            }
+            
+            .watch-description {
+                text-align: center;
+            }
+            
+            .watch-features {
+                justify-content: center;
+            }
+        }
+        
+        @media (min-width: 1025px) and (max-width: 1366px) {
+            .watches-page-header {
+                min-height: 85vh;
+            }
+            
+            .watches-hero-title {
+                font-size: 3.2rem;
+            }
+            
+            .model-showcase {
+                padding: 4rem 0;
+            }
+            
+            .showcase-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+                max-width: 1200px;
+            }
+            
+            .showcase-card {
+                max-width: 380px;
+                aspect-ratio: 1 / 1.15;
+            }
+            
+            .model-image-wrapper {
+                min-height: 550px;
+            }
+            
+            .model-image-wrapper img {
+                min-height: 550px;
+                max-height: 600px;
+            }
+            
+            .image-overlay h3 {
+                font-size: 1.7rem;
+            }
+            
+            .watches-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+                max-width: 1200px;
+                padding: 0 2rem;
+            }
+            
+            .watch-card {
+                max-width: 380px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (min-width: 1367px) and (max-width: 1600px) {
+            .watches-page-header {
+                min-height: 90vh;
+            }
+            
+            .watches-hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .model-showcase {
+                padding: 5rem 0;
+            }
+            
+            .showcase-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 3rem;
+                max-width: 1400px;
+            }
+            
+            .showcase-card {
+                max-width: 400px;
+                aspect-ratio: 1 / 1.2;
+            }
+            
+            .model-image-wrapper {
+                min-height: 600px;
+            }
+            
+            .model-image-wrapper img {
+                min-height: 600px;
+                max-height: 650px;
+            }
+            
+            .image-overlay h3 {
+                font-size: 1.8rem;
+            }
+            
+            .watches-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 3rem;
+                max-width: 1400px;
+                padding: 0 2rem;
+            }
+            
+            .watch-card {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (min-width: 1601px) {
+            .watches-page-header {
+                min-height: 100vh;
+            }
+            
+            .watches-hero-title {
+                font-size: 4rem;
+            }
+            
+            .model-showcase {
+                padding: 6rem 0;
+            }
+            
+            .showcase-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 3.5rem;
+                max-width: 1600px;
+            }
+            
+            .showcase-card {
+                max-width: 450px;
+                aspect-ratio: 1 / 1.2;
+            }
+            
+            .model-image-wrapper {
+                min-height: 650px;
+            }
+            
+            .model-image-wrapper img {
+                min-height: 650px;
+                max-height: 750px;
+            }
+            
+            .image-overlay h3 {
+                font-size: 2rem;
+            }
+            
+            .watches-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 3.5rem;
+                max-width: 1600px;
+                padding: 0 2rem;
+            }
+            
+            .watch-card {
+                max-width: 450px;
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .watches-page-header {
+                padding-top: 80px;
+                min-height: 70vh;
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+                width: 100%;
+            }
+            
+            /* Hide dark mode toggle in mobile for inspection */
+            .theme-toggle {
+                display: none !important;
+            }
+            
+            .watches-hero-video {
+                width: 140vw; /* Further increased from 120vw for better small mobile coverage */
+                left: -20vw; /* Adjusted to center the even wider video */
+                right: -20vw;
+            }
+            
+            .watches-hero-overlay {
+                width: 100vw;
+                left: 0;
+                right: 0;
+            }
+            
+            .watches-hero-title {
+                font-size: 2.2rem;
+                margin-bottom: 1rem;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .watches-subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 2rem;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .collection-selector {
+                gap: 8px;
+                margin-bottom: 2rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                width: 100%;
+            }
+            
+            .collection-btn {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+                flex: 1;
+                min-width: 100px;
+            }
+            
+            .watch-card {
+                margin: 0;
+                padding: 1.5rem;
+                border-radius: 15px;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .watch-image {
+                height: 200px;
+                border-radius: 12px;
+                width: 100%;
+            }
+            
+            .watch-name {
+                font-size: 1.3rem;
+                margin-bottom: 0.5rem;
+                text-align: center;
+            }
+            
+            .watch-price {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+            
+            .watches-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 1rem;
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .watches-page-header {
+                padding-top: 90px;
+                min-height: 55vh;
+                padding-left: 0.8rem;
+                padding-right: 0.8rem;
+            }
+            
+            .watches-hero-title {
+                font-size: 1.8rem;
+                margin-bottom: 0.8rem;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .watches-subtitle {
+                font-size: 0.8rem;
+                margin-bottom: 1.5rem;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .collection-selector {
+                gap: 6px;
+                margin-bottom: 1.5rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                width: 100%;
+            }
+            
+            .collection-btn {
+                padding: 6px 12px;
+                font-size: 0.75rem;
+                flex: 1;
+                min-width: 80px;
+            }
+            
+            .watch-card {
+                padding: 1.2rem;
+                border-radius: 12px;
+                width: 100%;
+            }
+            
+            .watch-image {
+                height: 180px;
+                border-radius: 10px;
+                width: 100%;
+            }
+            
+            .watch-name {
+                font-size: 1.2rem;
+                margin-bottom: 0.4rem;
+                text-align: center;
+            }
+            
+            .watch-price {
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
+                text-align: center;
+            }
+            
+            .watches-grid {
+                gap: 1.2rem;
+                padding: 0 0.8rem;
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .watches-page-header {
+                padding-top: 80px;
+                min-height: 50vh;
+                padding-left: 0.6rem;
+                padding-right: 0.6rem;
+            }
+            
+            .watches-hero-title {
+                font-size: 1.6rem;
+                margin-bottom: 0.6rem;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .watches-subtitle {
+                font-size: 0.75rem;
+                margin-bottom: 1.2rem;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .collection-selector {
+                gap: 4px;
+                margin-bottom: 1.2rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                width: 100%;
+            }
+            
+            .collection-btn {
+                padding: 5px 10px;
+                font-size: 0.7rem;
+                flex: 1;
+                min-width: 70px;
+            }
+            
+            .watch-card {
+                padding: 1rem;
+                border-radius: 10px;
+                width: 100%;
+            }
+            
+            .watch-image {
+                height: 160px;
+                border-radius: 8px;
+                width: 100%;
+            }
+            
+            .watch-name {
+                font-size: 1.1rem;
+                margin-bottom: 0.3rem;
+                text-align: center;
+            }
+            
+            .watch-price {
+                font-size: 0.9rem;
+                margin-bottom: 0.6rem;
+                text-align: center;
+            }
+            
+            .watches-grid {
+                gap: 1rem;
+                padding: 0 0.6rem;
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .watches-page-header {
+                padding-top: 70px;
+                min-height: 45vh;
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+            
+            .watches-hero-title {
+                font-size: 1.4rem;
+                margin-bottom: 0.5rem;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .watches-subtitle {
+                font-size: 0.7rem;
+                margin-bottom: 1rem;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .collection-selector {
+                gap: 3px;
+                margin-bottom: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                width: 100%;
+            }
+            
+            .collection-btn {
+                padding: 4px 8px;
+                font-size: 0.65rem;
+                flex: 1;
+                min-width: 60px;
+            }
+            
+            .watch-card {
+                padding: 0.8rem;
+                border-radius: 8px;
+                width: 100%;
+            }
+            
+            .watch-image {
+                height: 140px;
+                border-radius: 6px;
+                width: 100%;
+            }
+            
+            .watch-name {
+                font-size: 1rem;
+                margin-bottom: 0.2rem;
+                text-align: center;
+            }
+            
+            .watch-price {
+                font-size: 0.85rem;
+                margin-bottom: 0.5rem;
+                text-align: center;
+            }
+            
+            .watches-grid {
+                gap: 0.8rem;
+                padding: 0 0.5rem;
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .watches-page-header {
+                padding-top: 60px;
+                min-height: 40vh;
+                padding-left: 0.4rem;
+                padding-right: 0.4rem;
+                width: 70vh;
+            }
+            .watches-hero-overlay{
+                width: 80vh;
+            }
+            
+            .watches-hero-title {
+                font-size: 1.2rem;
+                margin-bottom: 0.4rem;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .watches-subtitle {
+                font-size: 0.65rem;
+                margin-bottom: 0.8rem;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .collection-selector {
+                gap: 2px;
+                margin-bottom: 0.8rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                width: 100%;
+            }
+            
+            .collection-btn {
+                padding: 3px 6px;
+                font-size: 0.6rem;
+                flex: 1;
+                min-width: 50px;
+            }
+            
+            .watch-card {
+                padding: 0.6rem;
+                border-radius: 6px;
+                width: 100%;
+            }
+            
+            .watch-image {
+                height: 120px;
+                border-radius: 4px;
+                width: 100%;
+            }
+            
+            .watch-name {
+                font-size: 0.9rem;
+                margin-bottom: 0.2rem;
+                text-align: center;
+            }
+            
+            .watch-price {
+                font-size: 0.8rem;
+                margin-bottom: 0.4rem;
+                text-align: center;
+            }
+            
+            .watches-grid {
+                gap: 0.6rem;
+                padding: 0 0.4rem;
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+
+        /* Why Elanicia Section */
+        .why-elanicia {
+            display: none;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            transition: all 0.4s ease;
+            animation: featureSlideUp 0.6s ease-out backwards;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0s; }
+        .feature-card:nth-child(2) { animation-delay: 0.1s; }
+        .feature-card:nth-child(3) { animation-delay: 0.2s; }
+        .feature-card:nth-child(4) { animation-delay: 0.3s; }
+
+        @keyframes featureSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .feature-card h3 {
+            font-family: 'Cinzel', serif;
+            color: #d4af37;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .feature-card p {
+            color: #6b5b47;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 480px) {
+            .watches-page-header {
+                padding-top: 80px;
+            }
+
+            .watches-hero-title {
+                font-size: 2rem;
+            }
+
+            .collection-btn {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1 class="logo-text"><a href="index.html" style="color: inherit; text-decoration: none;">Elanicia</a></h1>
+                    <span class="logo-tagline">Royal Swiss Heritage</span>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link" onclick="sessionStorage.setItem('skipWelcome', 'true')">Home</a></li>
+                    <li><a href="watches.html" class="nav-link active">Watches</a></li>
+                    <li><a href="accessories.html" class="nav-link">Accessories</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <div class="nav-actions">
+                    <button class="nav-action auth-btn-header" id="signInBtn" style="background: none; border: none; cursor: pointer;">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Sign In</span>
+                    </button>
+                    <button class="nav-action auth-btn-header" id="signUpBtn" style="background: none; border: none; cursor: pointer;">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Sign Up</span>
+                    </button>
+                    <a href="#" class="nav-action" id="userAction" style="display: none;">
+                        <i class="fas fa-user"></i>
+                        <span id="userActionText">Profile</span>
+                    </a>
+                    <button class="nav-action" id="logoutBtn" style="display: none; background: none; border: none; cursor: pointer;">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </button>
+                    <a href="#" class="nav-action cart">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Watches Page -->
+    <div class="watches-page-header">
+        <video autoplay muted loop playsinline class="watches-hero-video">
+            <source src="videos/start.mp4" type="video/mp4">
+        </video>
+        <div class="watches-hero-overlay"></div>
+        <div class="watches-hero-content">
+            <h1 class="watches-hero-title watches-title-glow">Elanicia Timepieces</h1>
+            <p class="watches-subtitle watches-subtitle-glow">Where Centuries of Heritage Meet Modern Artistry</p>
+            <p class="watches-tagline watches-tagline-glow">Every second matters. Every timepiece tells a story of Swiss mastery, handcrafted perfection, and timeless elegance.</p>
+        </div>
+    </div>
+
+    <!-- Model Showcase Section -->
+    <section class="model-showcase">
+        <div class="container">
+            <div class="showcase-grid">
+                <div class="showcase-card">
+                    <div class="model-image-wrapper">
+                        <video muted loop autoplay playsinline style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+                        </video>
+                        <img src="images/image1.jpg" alt="Model 1" style="position: relative; z-index: 1;">
+                        <div class="image-overlay">
+                            <h3>Executive</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="showcase-card">
+                    <div class="model-image-wrapper">
+                        <video muted loop autoplay playsinline style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+                        </video>
+                        <img src="images/image2.jpg" alt="Model 2" style="position: relative; z-index: 1;">
+                        <div class="image-overlay">
+                            <h3>Elegance</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="showcase-card">
+                    <div class="model-image-wrapper">
+                        <img src="images/image3.jpg" alt="Model 3">
+                        <div class="image-overlay">
+                            <h3>Heritage</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="showcase-card">
+                    <div class="model-image-wrapper">
+                        <img src="images/image4.jpg" alt="Model 4">
+                        <div class="image-overlay">
+                            <h3>Adventure</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Men's Collection -->
+    <section class="collection-section active" id="mensCollection">
+        <div class="container">
+            <div class="collection-header">
+                <h2 class="collection-title">Men's Premium Collection</h2>
+                <p class="collection-description">Designed for the modern gentleman, our men's collection features bold timepieces that combine Swiss precision with sophisticated engineering. Each watch represents the pinnacle of masculine elegance, crafted with premium materials including platinum, gold, titanium, and stainless steel. From executive boardrooms to adventurous expeditions, these watches are built to last generations while maintaining their timeless appeal. Our craftsmen have perfected every detail—mechanical movements, water resistance, and striking designs that define leadership and refinement.</p>
+            </div>
+
+            <div class="watches-grid">
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/platinum-watch2.jpg" alt="Platinum Heritage">
+                        <span class="watch-badge">Limited Edition</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Platinum Heritage</h3>
+                        <p class="watch-description">Timeless elegance meets Swiss precision in this masterpiece</p>
+                        <div class="watch-specs">
+                            <div>• Platinum case 950/1000</div>
+                            <div>• Sapphire crystal</div>
+                            <div>• Limited to 100 pieces</div>
+                        </div>
+                        <div class="watch-price">د.إ 195,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Steel Chronograph.jpg" alt="Steel Chronograph">
+                        <span class="watch-badge">Best Seller</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Steel Chronograph</h3>
+                        <p class="watch-description">Performance meets style with multi-function capability</p>
+                        <div class="watch-specs">
+                            <div>• Stainless steel 316L</div>
+                            <div>• Automatic chronograph</div>
+                            <div>• Water resistant 300m</div>
+                        </div>
+                        <div class="watch-price">د.إ 89,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Gold Executive.jpg" alt="Gold Elegance">
+                        <span class="watch-badge">New Arrival</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Gold Executive</h3>
+                        <p class="watch-description">Luxury redefined with 18k solid gold craftsmanship</p>
+                        <div class="watch-specs">
+                            <div>• 18k solid gold case</div>
+                            <div>• Mechanical movement</div>
+                            <div>• Swiss certified</div>
+                        </div>
+                        <div class="watch-price">د.إ 145,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Sports Master Pro.jpg" alt="Sports Master">
+                        <span class="watch-badge">Premium</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Sports Master Pro</h3>
+                        <p class="watch-description">Built for adventure with titanium durability</p>
+                        <div class="watch-specs">
+                            <div>• Titanium case</div>
+                            <div>• GPS chronograph</div>
+                            <div>• Water resistant 500m</div>
+                        </div>
+                        <div class="watch-price">د.إ 125,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Vintage Heritage.jpg" alt="Vintage Heritage">
+                        <span class="watch-badge">Exclusive</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Vintage Heritage</h3>
+                        <p class="watch-description">Classic design inspired by our 1920s archives</p>
+                        <div class="watch-specs">
+                            <div>• Rose gold case</div>
+                            <div>• Manual winding</div>
+                            <div>• Handcrafted dial</div>
+                        </div>
+                        <div class="watch-price">د.إ 95,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Royal Azure.jpg" alt="Royal Azure">
+                        <span class="watch-badge">Exclusive</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Royal Azure</h3>
+                        <p class="watch-description">Deep blue dial with sapphire crystal bezel</p>
+                        <div class="watch-specs">
+                            <div>• Steel 316L case</div>
+                            <div>• Sapphire crystal bezel</div>
+                            <div>• GMT function</div>
+                        </div>
+                        <div class="watch-price">د.إ 110,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Moonlight Titanium.jpg" alt="Moonlight Titanium">
+                        <span class="watch-badge">Premium</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Moonlight Titanium</h3>
+                        <p class="watch-description">Lightweight titanium with lunar complications</p>
+                        <div class="watch-specs">
+                            <div>• Titanium Grade 5 case</div>
+                            <div>• Lunar phase display</div>
+                            <div>• Sapphire caseback</div>
+                        </div>
+                        <div class="watch-price">د.إ 130,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Black Diamond Elite.jpg" alt="Black Diamond">
+                        <span class="watch-badge">Limited Edition</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Black Diamond Elite</h3>
+                        <p class="watch-description">Ultimate power with black diamonds and steel fusion</p>
+                        <div class="watch-specs">
+                            <div>• DLC steel case</div>
+                            <div>• Black diamond indices</div>
+                            <div>• Water resistant 600m</div>
+                        </div>
+                        <div class="watch-price">د.إ 155,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Women's Collection -->
+    <section class="collection-section" id="womensCollection">
+        <div class="container">
+            <div class="collection-header">
+                <h2 class="collection-title">Women's Luxury Collection</h2>
+                <p class="collection-description">Celebrate elegance and grace with our exquisite women's timepiece collection. Each watch is an artistic masterpiece, delicately crafted to complement feminine beauty while delivering Swiss precision and reliability. Our designers have incorporated precious metals—rose gold, white gold, and platinum—combined with natural gemstones including diamonds, sapphires, and emeralds. Whether you seek minimalist sophistication or glamorous statement pieces, our women's collection offers watches that transcend trends and become cherished heirlooms passed down through generations.</p>
+            </div>
+
+            <div class="watches-grid">
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Rose Gold Elegance.jpg" alt="Rose Gold Elegance">
+                        <span class="watch-badge">New Arrival</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Rose Gold Elegance</h3>
+                        <p class="watch-description">Delicate rose gold with sparkling diamond markers</p>
+                        <div class="watch-specs">
+                            <div>• Rose gold 18k case</div>
+                            <div>• Diamond hour markers</div>
+                            <div>• Swiss movement</div>
+                        </div>
+                        <div class="watch-price">د.إ 115,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Pearl Elegance.jpg" alt="Pearl Elegance">
+                        <span class="watch-badge">Exclusive</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Pearl Elegance</h3>
+                        <p class="watch-description">Mother-of-pearl dial with sophisticated styling</p>
+                        <div class="watch-specs">
+                            <div>• White gold 18k</div>
+                            <div>• Mother-of-pearl dial</div>
+                            <div>• Diamond bezel</div>
+                        </div>
+                        <div class="watch-price">د.إ 105,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Diamond Aurora.jpg" alt="Diamond Aurora">
+                        <span class="watch-badge">Premium</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Diamond Aurora</h3>
+                        <p class="watch-description">Sparkling diamonds capture light with every movement</p>
+                        <div class="watch-specs">
+                            <div>• Platinum 950</div>
+                            <div>• Full diamond setting</div>
+                            <div>• Sapphire crystal</div>
+                        </div>
+                        <div class="watch-price">د.إ 185,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Sapphire Dreams.jpg" alt="Sapphire Dreams">
+                        <span class="watch-badge">Limited Edition</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Sapphire Dreams</h3>
+                        <p class="watch-description">Rare blue sapphires set in white gold</p>
+                        <div class="watch-specs">
+                            <div>• White gold 18k</div>
+                            <div>• Natural sapphires</div>
+                            <div>• Swiss precision</div>
+                        </div>
+                        <div class="watch-price">د.إ 135,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Silver Swan.jpg" alt="Silver Swan">
+                        <span class="watch-badge">Best Seller</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Silver Swan</h3>
+                        <p class="watch-description">Modern elegance with timeless appeal</p>
+                        <div class="watch-specs">
+                            <div>• Silver steel case</div>
+                            <div>• Minimalist dial</div>
+                            <div>• Water resistant</div>
+                        </div>
+                        <div class="watch-price">د.إ 65,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Pink Blush Quartz.jpg" alt="Pink Blush">
+                        <span class="watch-badge">New Arrival</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Pink Blush Quartz</h3>
+                        <p class="watch-description">Soft pink gold with delicate complications</p>
+                        <div class="watch-specs">
+                            <div>• Rose gold 18k case</div>
+                            <div>• Quartz precision</div>
+                            <div>• Luminous hands</div>
+                        </div>
+                        <div class="watch-price">د.إ 85,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Sunburst Radiance.jpg" alt="Sunburst Radiance">
+                        <span class="watch-badge">Exclusive</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Sunburst Radiance</h3>
+                        <p class="watch-description">Golden dial that catches light with every movement</p>
+                        <div class="watch-specs">
+                            <div>• 18k yellow gold</div>
+                            <div>• Radiant sunburst dial</div>
+                            <div>• Diamond bezel</div>
+                        </div>
+                        <div class="watch-price">د.إ 135,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Midnight Stars.jpg" alt="Midnight Stars">
+                        <span class="watch-badge">Premium</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Midnight Stars</h3>
+                        <p class="watch-description">Dark elegance with sparkling star hour markers</p>
+                        <div class="watch-specs">
+                            <div>• Black ceramic case</div>
+                            <div>• Diamond star markers</div>
+                            <div>• Sapphire caseback</div>
+                        </div>
+                        <div class="watch-price">د.إ 155,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unisex Collection -->
+    <section class="collection-section" id="unisexCollection">
+        <div class="container">
+            <div class="collection-header">
+                <h2 class="collection-title">Unisex Classics</h2>
+                <p class="collection-description">Timeless designs transcending gender, perfect for anyone who appreciates true horological artistry</p>
+            </div>
+
+            <div class="watches-grid">
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Universal Standard.jpg" alt="Universal Standard">
+                        <span class="watch-badge">Best Seller</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Universal Standard</h3>
+                        <p class="watch-description">The perfect blend of versatility and luxury</p>
+                        <div class="watch-specs">
+                            <div>• Stainless steel case</div>
+                            <div>• Automatic movement</div>
+                            <div>• 50m water resistant</div>
+                        </div>
+                        <div class="watch-price">د.إ 75,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Platinum Minimal.jpg" alt="Platinum Minimal">
+                        <span class="watch-badge">Icon</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Platinum Minimal</h3>
+                        <p class="watch-description">Less is more in this minimalist masterpiece</p>
+                        <div class="watch-specs">
+                            <div>• Platinum 950 case</div>
+                            <div>• Clean dial design</div>
+                            <div>• Perpetual guarantee</div>
+                        </div>
+                        <div class="watch-price">د.إ 165,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Sport Heritage.jpg" alt="Sport Heritage">
+                        <span class="watch-badge">Premium</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Sport Heritage</h3>
+                        <p class="watch-description">Outdoor adventure meets refined aesthetics</p>
+                        <div class="watch-specs">
+                            <div>• Titanium case</div>
+                            <div>• Chronograph function</div>
+                            <div>• 100m water resistant</div>
+                        </div>
+                        <div class="watch-price">د.إ 95,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Twilight Gold.jpg" alt="Twilight Gold">
+                        <span class="watch-badge">Exclusive</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Twilight Gold</h3>
+                        <p class="watch-description">Sunset-inspired gold with universal appeal</p>
+                        <div class="watch-specs">
+                            <div>• 18k gold case</div>
+                            <div>• Radiant dial</div>
+                            <div>• Swiss precision</div>
+                        </div>
+                        <div class="watch-price">د.إ 119,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Ivory Serenity.jpg" alt="Ivory Serenity">
+                        <span class="watch-badge">New Arrival</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Ivory Serenity</h3>
+                        <p class="watch-description">Tranquil elegance for any occasion</p>
+                        <div class="watch-specs">
+                            <div>• Ceramic case</div>
+                            <div>• Cream dial</div>
+                            <div>• Timeless design</div>
+                        </div>
+                        <div class="watch-price">د.إ 79,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Renaissance.jpg" alt="Renaissance">
+                        <span class="watch-badge">Premium</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Renaissance</h3>
+                        <p class="watch-description">Inspired by Renaissance artistry and craftsmanship</p>
+                        <div class="watch-specs">
+                            <div>• 18k bi-color gold</div>
+                            <div>• Guilloche dial</div>
+                            <div>• Hand-assembled</div>
+                        </div>
+                        <div class="watch-price">د.إ 175,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Quantum Leap.jpg" alt="Quantum Leap">
+                        <span class="watch-badge">New Arrival</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Quantum Leap</h3>
+                        <p class="watch-description">Advanced technology meets timeless design</p>
+                        <div class="watch-specs">
+                            <div>• Titanium ceramic hybrid</div>
+                            <div>• Smart complications</div>
+                            <div>• 25-year power reserve</div>
+                        </div>
+                        <div class="watch-price">د.إ 195,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="images/Emerald Dreams.jpg" alt="Emerald Dreams">
+                        <span class="watch-badge">Exclusive</span>
+                    </div>
+                    <div class="watch-info">
+                        <h3 class="watch-name">Emerald Dreams</h3>
+                        <p class="watch-description">Green emerald dial capturing nature's essence</p>
+                        <div class="watch-specs">
+                            <div>• 18k gold case</div>
+                            <div>• Emerald green dial</div>
+                            <div>• Sapphire crystal crown</div>
+                        </div>
+                        <div class="watch-price">د.إ 165,999</div>
+                        <button class="watch-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="back-to-home">
+        <a href="index.html" onclick="sessionStorage.setItem('skipWelcome', 'true')">Back to Home</a>
+    </div>
+
+    <!-- Watch Popup Modal -->
+    <div id="watchPopup" class="watch-popup-modal">
+        <div class="watch-popup-content">
+            <span class="watch-popup-close">&times;</span>
+            <div class="watch-popup-body">
+                <div class="watch-popup-image">
+                    <img id="popupWatchImage" src="" alt="">
+                </div>
+                <div class="watch-popup-details">
+                    <h2 id="popupWatchName"></h2>
+                    <p id="popupWatchDescription"></p>
+                    <div class="popup-specs">
+                        <div class="spec-item">
+                            <strong>Manufactured:</strong> <span id="popupManufacturer"></span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Stock Status:</strong> <span id="popupStock"></span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Colors Available:</strong> <div id="popupColors"></div>
+                        </div>
+                        <div id="popupWatchSpecs"></div>
+                    </div>
+                    <div class="popup-price">د.إ <span id="popupPrice"></span></div>
+                    <button class="popup-add-cart" onclick="addWatchToCart()">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('elaniciaTheme') || 'light';
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            
+            // Update icon
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            
+            // Save theme preference
+            localStorage.setItem('elaniciaTheme', isDark ? 'dark' : 'light');
+        });
+
+        // Show More functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const collections = ['mensCollection', 'womensCollection', 'unisexCollection'];
+            
+            collections.forEach(collectionId => {
+                const collection = document.getElementById(collectionId);
+                if (!collection) return;
+                
+                const watchGrid = collection.querySelector('.watches-grid');
+                if (!watchGrid) return;
+                
+                const watchCards = watchGrid.querySelectorAll('.watch-card');
+                if (watchCards.length > 4) {
+                    // Hide cards beyond the 4th
+                    watchCards.forEach((card, index) => {
+                        if (index >= 4) {
+                            card.classList.add('hidden-watch');
+                        }
+                    });
+                    
+                    // Add Show More/Less button
+                    const showMoreBtn = document.createElement('button');
+                    showMoreBtn.className = 'show-more-btn';
+                    showMoreBtn.textContent = 'Show More';
+                    let isShowingMore = false;
+                    
+                    showMoreBtn.onclick = function() {
+                        const watchCards = watchGrid.querySelectorAll('.watch-card');
+                        
+                        if (!isShowingMore) {
+                            // Show more cards
+                            watchCards.forEach(card => card.classList.remove('hidden-watch'));
+                            this.textContent = 'Show Less';
+                            isShowingMore = true;
+                        } else {
+                            // Show less cards
+                            const visibleCards = watchGrid.querySelectorAll('.watch-card:not(.hidden-watch)');
+                            for (let i = 4; i < visibleCards.length; i++) {
+                                visibleCards[i].classList.add('hidden-watch');
+                            }
+                            this.textContent = 'Show More';
+                            isShowingMore = false;
+                        }
+                    };
+                    
+                    watchGrid.parentElement.appendChild(showMoreBtn);
+                }
+            });
+        });
+
+        // Watch popup functionality
+        const watchPopup = document.getElementById('watchPopup');
+        const closePopup = document.querySelector('.watch-popup-close');
+        
+        if (closePopup) {
+            closePopup.onclick = function() {
+                watchPopup.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            };
+        }
+        
+        window.onclick = function(event) {
+            if (event.target === watchPopup) {
+                watchPopup.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        };
+
+        // Open popup when clicking on watch card
+        document.querySelectorAll('.watch-card, .watch-image').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (e.target.tagName === 'BUTTON') return;
+                
+                const watchCard = this.closest('.watch-card') || this.parentElement.closest('.watch-card');
+                if (!watchCard) return;
+                
+                const watchName = watchCard.querySelector('.watch-name').textContent;
+                const watchDescription = watchCard.querySelector('.watch-description').textContent;
+                const watchPrice = watchCard.querySelector('.watch-price').textContent;
+                const watchImage = watchCard.querySelector('.watch-image img').src;
+                const watchSpecs = watchCard.querySelector('.watch-specs').innerHTML;
+                
+                // Set popup content
+                document.getElementById('popupWatchName').textContent = watchName;
+                document.getElementById('popupWatchDescription').textContent = watchDescription;
+                document.getElementById('popupWatchImage').src = watchImage;
+                document.getElementById('popupWatchSpecs').innerHTML = watchSpecs;
+                
+                // Generate manufacturer, stock, colors based on watch
+                const manufacturer = watchName.includes('Platinum') ? 'Geneva, Switzerland' : 
+                                   watchName.includes('Gold') ? 'Zurich, Switzerland' :
+                                   watchName.includes('Steel') ? 'Basel, Switzerland' : 'Switzerland';
+                
+                const stock = Math.random() > 0.3 ? 'In Stock' : 'Limited Stock';
+                const colors = watchName.includes('Gold') ? ['Rose Gold', 'Yellow Gold', 'White Gold'] :
+                              watchName.includes('Steel') ? ['Silver', 'Black', 'Blue'] :
+                              watchName.includes('Platinum') ? ['Platinum', 'White Gold'] :
+                              ['Silver', 'Gold', 'Rose Gold', 'Black'];
+                
+                document.getElementById('popupManufacturer').textContent = manufacturer;
+                document.getElementById('popupStock').textContent = stock;
+                document.getElementById('popupStock').className = stock === 'In Stock' ? 'in-stock' : 'limited-stock';
+                
+                const colorsContainer = document.getElementById('popupColors');
+                colorsContainer.innerHTML = colors.map(color => 
+                    `<span class="color-option">${color}</span>`
+                ).join('');
+                
+                const priceNum = watchPrice.replace(/[^0-9]/g, '');
+                document.getElementById('popupPrice').textContent = parseInt(priceNum).toLocaleString();
+                
+                // Store current watch data for cart
+                window.currentWatchData = {
+                    id: 'watch-' + Date.now(),
+                    name: watchName,
+                    price: watchPrice,
+                    image: watchImage,
+                    manufacturer: manufacturer,
+                    stock: stock,
+                    colors: colors
+                };
+                
+                // Show popup
+                watchPopup.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Add watch to cart from popup
+        function addWatchToCart() {
+            if (!window.currentWatchData) return;
+            
+            if (typeof addToCart === 'function') {
+                addToCart(window.currentWatchData);
+            } else {
+                // Fallback
+                const cartCount = document.querySelector('.cart-count');
+                if (cartCount) {
+                    cartCount.textContent = parseInt(cartCount.textContent || 0) + 1;
+                }
+                alert('Added to cart: ' + window.currentWatchData.name);
+            }
+            
+            // Close popup
+            watchPopup.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Add to Cart button functionality
+        const cartBtns = document.querySelectorAll('.watch-btn');
+        cartBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                
+                const watchCard = this.closest('.watch-card');
+                const watchName = watchCard.querySelector('.watch-name').textContent;
+                const watchPrice = watchCard.querySelector('.watch-price').textContent;
+                const watchImage = watchCard.querySelector('.watch-image img').src;
+                
+                const product = {
+                    id: 'watch-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9),
+                    name: watchName,
+                    price: watchPrice,
+                    image: watchImage,
+                    category: 'Watch',
+                    manufacturer: 'Switzerland',
+                    stock: 'In Stock',
+                    colors: ['Silver', 'Gold', 'Rose Gold']
+                };
+                
+                if (typeof addToCart === 'function') {
+                    addToCart(product);
+                } else {
+                    // Fallback
+                    const cartCount = document.querySelector('.cart-count');
+                    if (cartCount) {
+                        cartCount.textContent = parseInt(cartCount.textContent || 0) + 1;
+                    }
+                    alert('Added to cart: ' + watchName);
+                }
+            });
+        });
+
+        // Update cart link
+        document.querySelectorAll('.cart').forEach(cartLink => {
+            cartLink.href = 'cart.html';
+        });
+    </script>
+
+    <style>
+        /* Show More Button */
+        .show-more-btn {
+            display: block;
+            margin: 3rem auto;
+            padding: 14px 40px;
+            background: linear-gradient(45deg, #8b6914, #d4af37);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1.5px;
+        }
+
+        .show-more-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+        }
+
+        .hidden-watch {
+            display: none !important;
+        }
+
+        /* Watch Popup Modal */
+        .watch-popup-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .watch-popup-content {
+            background: linear-gradient(135deg, #faf8f5 0%, #f5f0eb 100%);
+            margin: 3% auto;
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 900px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.4s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .watch-popup-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: #8b6914;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .watch-popup-close:hover {
+            color: #d4af37;
+            transform: rotate(90deg) scale(1.2);
+        }
+
+        .watch-popup-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .watch-popup-image {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #f5f0eb 0%, #e8dcc8 100%);
+        }
+
+        .watch-popup-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .watch-popup-details h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+        }
+
+        .watch-popup-details > p {
+            color: #6b5b47;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .popup-specs {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .spec-item {
+            margin-bottom: 1rem;
+            color: #3d3427;
+        }
+
+        .spec-item strong {
+            color: #8b6914;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .in-stock {
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        .limited-stock {
+            color: #ffc107;
+            font-weight: 600;
+        }
+
+        .color-option {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 5px;
+            background: white;
+            border: 2px solid #d4af37;
+            border-radius: 20px;
+            color: #8b6914;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .color-option:hover {
+            background: #d4af37;
+            color: white;
+        }
+
+        .popup-price {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: #d4af37;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .popup-add-cart {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(45deg, #8b6914, #d4af37);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+        }
+
+        .popup-add-cart:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Perfect Responsive Popup Design */
+        @media (max-width: 1440px) {
+            .watch-popup-content {
+                max-width: 90%;
+                max-height: 90vh;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .watch-popup-content {
+                max-width: 92%;
+                max-height: 92vh;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .watch-popup-content {
+                max-width: 94%;
+                max-height: 94vh;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .watch-popup-content {
+                max-width: 95%;
+                max-height: 95vh;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .watch-popup-content {
+                max-width: 96%;
+                max-height: 96vh;
+                margin: 2vh auto;
+            }
+            
+            .watch-popup-body {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .watch-popup-image {
+                height: 250px;
+            }
+            
+            .watch-popup-info h3 {
+                font-size: 1.8rem;
+            }
+            
+            .watch-popup-price {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .watch-popup-content {
+                max-width: 98%;
+                max-height: 98vh;
+                margin: 1vh auto;
+                padding: 1rem;
+            }
+            
+            .watch-popup-body {
+                gap: 0.8rem;
+            }
+            
+            .watch-popup-image {
+                height: 200px;
+            }
+            
+            .watch-popup-info h3 {
+                font-size: 1.5rem;
+            }
+            
+            .watch-popup-price {
+                font-size: 1.3rem;
+            }
+            
+            .watch-popup-description {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .watch-popup-content {
+                max-width: 98%;
+                max-height: 98vh;
+                margin: 0.5vh auto;
+                padding: 0.8rem;
+            }
+            
+            .watch-popup-body {
+                gap: 0.6rem;
+            }
+            
+            .watch-popup-image {
+                height: 180px;
+            }
+            
+            .watch-popup-info h3 {
+                font-size: 1.3rem;
+            }
+            
+            .watch-popup-price {
+                font-size: 1.1rem;
+            }
+            
+            .watch-popup-description {
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .watch-popup-content {
+                padding: 0.6rem;
+            }
+            
+            .watch-popup-body {
+                gap: 0.5rem;
+            }
+            
+            .watch-popup-image {
+                height: 160px;
+            }
+            
+            .watch-popup-info h3 {
+                font-size: 1.2rem;
+            }
+            
+            .watch-popup-price {
+                font-size: 1rem;
+            }
+            
+            .watch-popup-description {
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .watch-popup-content {
+                padding: 0.5rem;
+            }
+            
+            .watch-popup-body {
+                gap: 0.4rem;
+            }
+            
+            .watch-popup-image {
+                height: 140px;
+            }
+            
+            .watch-popup-info h3 {
+                font-size: 1.1rem;
+            }
+            
+            .watch-popup-price {
+                font-size: 0.9rem;
+            }
+            
+            .watch-popup-description {
+                font-size: 0.75rem;
+            }
+        }
+    /* Remove Animations for Better Performance */
+        .watches-hero-content,
+        .watches-hero-title,
+        .watches-subtitle,
+        .watches-tagline,
+        .collection-header,
+        .collection-title,
+        .collection-description,
+        .model-showcase,
+        .showcase-card,
+        .filter-section,
+        .collection-section {
+            animation: none !important;
+            transform: none !important;
+            opacity: 1 !important;
+        }
+
+        /* iPhone 14 Pro Max & iPad Air Navigation Optimization */
+        @media (max-width: 430px) {
+            .nav-container {
+                padding: 0 15px;
+            }
+            
+            .nav-menu {
+                gap: 0.5rem;
+            }
+            
+            .nav-link {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.6rem;
+            }
+            
+            .nav-actions {
+                gap: 0.3rem;
+            }
+            
+            .nav-action {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.75rem;
+            }
+            
+            .theme-toggle {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            .nav-menu {
+                gap: 1.5rem;
+            }
+            
+            .nav-link {
+                font-size: 0.9rem;
+                padding: 0.5rem 0.8rem;
+            }
+            
+            .nav-actions {
+                gap: 0.8rem;
+                margin-right: 1rem;
+            }
+            
+            .nav-action {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+            
+            .theme-toggle {
+                width: 38px;
+                height: 38px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</body>
+</html>
